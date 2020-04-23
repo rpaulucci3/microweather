@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using microweather.Models;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Hosting;
 
 namespace microweather.Controllers
@@ -46,9 +44,15 @@ namespace microweather.Controllers
 
             using (IDbConnection db = new SqlConnection(conString))
             {
-                myList = db.Query<Observation>("Select * From MicroWeather").ToList();
+                myList = db.Query<Observation>("Select * From MicroWeather ORDER BY [timestamp] DESC").ToList();
             }
             return myList;
+        }
+
+        public string GetLatestImage() 
+        {
+            Utils u = new Utils(configuration);
+            return u.GetLatestImage();
         }
 
         [HttpPost]
@@ -66,19 +70,5 @@ namespace microweather.Controllers
             return true;
         }
 
-        public bool AddImage(Object files)
-        {
-            var _files = HttpContext.Request.Form.Files;
-            if (_files == null) { return false; }
-            var file = _files.First();
-            var path = Path.Combine(_hostingEnvironment.WebRootPath, "image.jpg");
-
-            using (var bits = new FileStream(path, FileMode.Create))
-            {
-                file.CopyTo(bits);
-            }
-
-            return true;
-        }
     }
 }

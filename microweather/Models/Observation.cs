@@ -29,5 +29,7 @@ namespace microweather.Models
 
         public int rain_rate { get; set; }
 
+        public string image { get; set; }
+
     }
 }
