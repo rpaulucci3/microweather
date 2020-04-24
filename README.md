@@ -8,9 +8,11 @@ Originally made for CS 4365 (Introduction to Enterprise Computing) at [Georgia T
 
 Licensed under BSD 3-clause where applicable. Some code inspired by Stack Overflow and blog posts.
 
+Uses [Dapper](https://dapper-tutorial.net/), [Dapper.Contrib](https://www.nuget.org/packages/Dapper.Contrib/), [Json.NET](https://www.newtonsoft.com/json), [Bootstrap](https://getbootstrap.com), [jQuery](https://jquery.com/), [DataTables](https://datatables.net/), [FontAwesome](https://fontawesome.com/) and [github-corners](https://github.com/tholman/github-corners).
+
 ## Folder Structure
 
-* `microbit` contains JavaScript files to be compiled into `.hex` using [the BBC microbit MakeCode editor](https://makecode.microbit.org/#editor) and uploaded onto a microbit.
+* `microbit` contains JavaScript files to be compiled into `.hex` using [the MakeCode editor](https://makecode.microbit.org/#editor) and uploaded onto a BBC microbit.
 * `microweather` contains an ASP.NET Core 3.1 Web App project, using a Visual Studio 2019 (16.5) solution.
 * `raspberry` contains the Python files that run on a Raspberry Pi attached to a camera module and the microbit via a serial (USB) connection.
 
